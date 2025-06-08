@@ -1,0 +1,49 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Gastos por Categoría</h2>
+<canvas id="graficoCategoria"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const data = {{ data|safe }};
+  const labels = data.map(item => item.categoria);
+  const valores = data.map(item => item.total);
+
+  const ctx = document.getElementById('graficoCategoria').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Gastos por categoría',
+        data: valores,
+        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+{% endblock %}
+
+</body>
+</html>
+
+
+-->

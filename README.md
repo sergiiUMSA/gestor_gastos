@@ -2,6 +2,8 @@
 
 ## 📌 Descripción
 Aplicación web desarrollada con Django para gestionar y visualizar los gastos personales de un usuario. El sistema permite registrar transacciones, establecer presupuestos por categoría y mostrar gráficos dinámicos que ayudan a controlar las finanzas.
+## 📌Objetivo
+Facilitar la gestión financiera personal permitiendo a los usuarios visualizar en tiempo real sus gastos, comparar con su presupuesto mensual y recibir alertas cuando lo superen.
 
 ## 🚀 Funcionalidades
 - Registro y autenticación de usuarios.
@@ -20,3 +22,8 @@ django-notifications o sistema propio de alertas
 ## 📦 Requisitos
 bash
 pip install -r requirements.txt
+👥 Integrantes del Proyecto
+Apaza Flores Randdy Jherson N°11
+Huchani Vargas Yasmin Carla N°97
+Ignacio Mamani José Fernando N°99
+Soto Hilari Sergio Gabriel N° 179

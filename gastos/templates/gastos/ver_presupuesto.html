@@ -1,0 +1,29 @@
+{% extends 'gastos/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Presupuestos Registrados</h2>
+    {% if presupuesto %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Mes</th>
+                    <th>Año</th>
+                    <th>Monto</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in presupuestos %}
+                <tr>
+                    <td>{{ p.mes }}</td>
+                    <td>{{ p.anio }}</td>
+                    <td>{{ p.monto }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay presupuestos registrados.</p>
+    {% endif %}
+</div>
+{% endblock %}

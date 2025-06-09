@@ -1,0 +1,44 @@
+{% extends 'gastos/base.html' %}
+
+{% block content %}
+<h2>Gráfico de Gastos por Categoría</h2>
+<canvas id="graficoGastos" width="400" height="200"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+fetch("{% url 'grafico_gastos' %}")
+    .then(response => response.json())
+    .then(data => {
+        const colores = data.categorias.map(() => {
+            const r = Math.floor(Math.random() * 255);
+            const g = Math.floor(Math.random() * 255);
+            const b = Math.floor(Math.random() * 255);
+            return `rgba(${r}, ${g}, ${b}, 0.6)`;
+        });
+
+        const ctx = document.getElementById('graficoGastos').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.categorias,
+                datasets: [{
+                    label: 'Gasto total por categoría',
+                    data: data.montos,
+                    backgroundColor: colores,
+                    borderColor: colores.map(color => color.replace('0.6', '1')),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+{% endblock %}

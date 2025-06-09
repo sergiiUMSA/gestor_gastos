@@ -1,0 +1,52 @@
+{% extends 'gastos/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Resumen del Mes</h1>
+    <p>Información actualizada de tus gastos y presupuesto.</p>
+
+    {% if presupuesto %}
+        <p><strong>Presupuesto para {{ presupuesto.mes }}/{{ presupuesto.anio }}:</strong> Bs {{ presupuesto.monto }}</p>
+        <p><strong>Gastos realizados:</strong> Bs {{ gastos_mes }}</p>
+        <p><strong>Monto disponible:</strong> Bs {{ disponible }}</p>
+
+        <canvas id="graficoResumen" width="400" height="400"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ctx = document.getElementById('graficoResumen').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Gastado', 'Disponible'],
+                    datasets: [{
+                        data: [{{ gastos_mes }}, {{ disponible }}],
+                        backgroundColor: ['#e74c3c', '#2ecc71'],
+                        borderColor: ['#c0392b', '#27ae60'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Distribución del Presupuesto'
+                        }
+                    }
+                }
+            });
+        </script>
+    {% else %}
+        <p>No tienes presupuesto definido para este mes.</p>
+    {% endif %}
+
+    {% if alerta %}
+        <div style="color: red; font-weight: bold;">
+            {{ alerta }}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends 'gastos/base.html' %}
+
+{% block content %}
+
+<h2>Gastos Mensuales del Año Actual</h2> <canvas id="graficoMensual" width="600" height="300"></canvas> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <script> fetch("{% url 'grafico_mensual' %}") .then(response => response.json()) .then(data => { const ctx = document.getElementById('graficoMensual').getContext('2d'); new Chart(ctx, { type: 'line', data: { labels: data.meses, datasets: [{ label: 'Gasto por Mes (Bs)', data: data.montos, backgroundColor: 'rgba(75, 192, 192, 0.4)', borderColor: 'rgba(75, 192, 192, 1)', borderWidth: 2, fill: true, tension: 0.4 }] }, options: { responsive: true, plugins: { legend: { position: 'top' } }, scales: { y: { beginAtZero: true } } } }); }); </script>
+{% endblock %}

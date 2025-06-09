@@ -1,0 +1,18 @@
+{% extends 'gastos/base.html' %}
+
+{% block title %}Inicio - Gestor de Gastos{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1 class="mb-4">Bienvenido al Gestor de Gastos Personales</h1>
+    <img src="https://img.freepik.com/vector-gratis/smartphone-iconos-comercio-electronico_24877-50270.jpg?semt=ais_items_boosted&w=740" alt="Gastos" width="200" class="mb-4">
+
+    <div class="d-grid gap-3 col-6 mx-auto">
+        <a href="{% url 'agregar_transaccion' %}" class="btn btn-success btn-lg">Agregar Gasto</a>
+        <a href="{% url 'lista_transacciones' %}" class="btn btn-primary btn-lg">Ver Lista de Gastos</a>
+        <a href="{% url 'vista_grafico' %}" class="btn btn-warning btn-lg">Ver Gráfico de Gastos</a>
+        <a href="{% url 'resumen_mes' %}" class="btn btn-success btn-lg">Ver Resumen del mes</a>
+    </div>
+</div>
+{% endblock %}
+

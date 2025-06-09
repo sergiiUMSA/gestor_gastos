@@ -11,12 +11,12 @@ Aplicación web desarrollada con Django para gestionar y visualizar los gastos p
 - Gráficos por categoría y por mes usando Chart.js.
 
 ## 🛠️ Tecnologías
-- Python 3.x
-- Django
-- HTML/CSS (con Tailwind o Bootstrap)
-- Chart.js
-- SQLite3 (por defecto) / PostgreSQL (opcional)
+Python 3.10+
+Django 4.x
+Librerías adicionales (recomendadas):
+django-crispy-forms (para formularios más estilizados)
+django-notifications o sistema propio de alertas
 
 ## 📦 Requisitos
-```bash
+bash
 pip install -r requirements.txt

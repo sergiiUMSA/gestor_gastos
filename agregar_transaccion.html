@@ -1,0 +1,13 @@
+{% extends 'gastos/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Agregar Transacción{% endblock %}
+
+{% block content %}
+<h2>Agregar Nueva Transacción</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Guardar</button>
+</form>
+{% endblock %}

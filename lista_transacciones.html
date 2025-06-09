@@ -1,0 +1,42 @@
+{% extends 'gastos/base.html' %}
+
+{% block title %}Lista de Transacciones{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">Transacciones Registradas</h2>
+
+    {% if transacciones %}
+    <table class="table table-striped mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>Fecha</th>
+                <th>Categoría</th>
+                <th>Monto</th>
+                <th>Descripción</th>
+                <th>Acciones</th>  <!-- Nueva columna -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in transacciones %}
+            <tr>
+                <td>{{ t.fecha }}</td>
+                <td>{{ t.categoria }}</td>
+                <td>{{ t.monto }}</td>
+                <td>{{ t.descripcion }}</td>
+                <td>
+                    <a href="{% url 'editar_transaccion' t.id %}" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="{% url 'eliminar_transaccion' t.id %}" class="btn btn-sm btn-danger"
+                       onclick="return confirm('¿Estás seguro de eliminar esta transacción?');">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No hay transacciones registradas.</p>
+    {% endif %}
+</div>
+{% endblock %}
